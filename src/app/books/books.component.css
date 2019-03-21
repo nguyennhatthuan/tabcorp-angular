@@ -1,0 +1,22 @@
+.bookItem {
+  max-width: 80%;
+}
+
+.booksContainer {
+  width: 100%;
+}
+
+.bookItemContainer {
+  width: 100%;
+  height: 100% !important;
+  margin: 0.5em;
+}
+
+.bookItemCard {
+  width: 100%;
+}
+
+.bookHeaderImage {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Closed_Book_Icon.svg/512px-Closed_Book_Icon.svg.png');
+  background-size: cover;
+}

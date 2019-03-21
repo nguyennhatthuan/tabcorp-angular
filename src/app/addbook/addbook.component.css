@@ -1,0 +1,15 @@
+.book-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+}
+
+.book-form-container>* {
+  width: 100%;
+  margin: 0.5em;
+}
+
+#description {
+  min-height: 4em;
+  max-height: 4em;
+}

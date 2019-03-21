@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Book List (number of books: {{ books.length }})</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="booksContainer">
+  <mat-list>
+    <mat-list-item *ngFor="let book of books" class="bookItemContainer">
+      <mat-card class="bookItemCard">
+        <mat-card-header>
+          <div mat-card-avatar class="bookHeaderImage"></div>
+          <mat-card-title>{{ book.title }}</mat-card-title>
+          <mat-card-subtitle>{{ book.category }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ book.description }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </mat-list-item>
+  </mat-list>
+</div>
