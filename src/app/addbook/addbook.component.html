@@ -18,6 +18,9 @@
           placeholder="Title"
           required
         />
+        <mat-hint align="end"
+          >{{ addBookForm.get("titleInput").value?.length || 0 }}/30</mat-hint
+        >
         <mat-error
           *ngIf="
             addBookForm.get('titleInput').errors?.required ||
