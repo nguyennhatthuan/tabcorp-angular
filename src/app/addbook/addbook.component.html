@@ -21,6 +21,9 @@
         <mat-error *ngIf="addBookForm.get('titleInput').errors?.required">
           You must enter a value
         </mat-error>
+        <mat-error *ngIf="addBookForm.get('titleInput').errors?.whitespace">
+          Please enter valid data
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -49,6 +52,11 @@
         ></textarea>
         <mat-error *ngIf="addBookForm.get('descriptionInput').errors?.required">
           You must enter a value
+        </mat-error>
+        <mat-error
+          *ngIf="addBookForm.get('descriptionInput').errors?.whitespace"
+        >
+          Please enter valid data
         </mat-error>
       </mat-form-field>
 

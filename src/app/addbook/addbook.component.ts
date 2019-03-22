@@ -8,6 +8,7 @@ import {
 import { mockBooks } from "./../../mockdata/books";
 import { Book } from "src/models/book";
 import { BookCategory } from "src/constants/category";
+import { NoWhitespaceValidator } from "src/utils/validators";
 
 @Component({
   selector: "app-addbook",
@@ -22,20 +23,28 @@ export class AddbookComponent implements OnInit {
 
   ngOnInit() {
     this.addBookForm = new FormGroup({
-      titleInput: new FormControl("", [Validators.required]),
-      descriptionInput: new FormControl("", [Validators.required]),
+      titleInput: new FormControl("", [
+        Validators.required,
+        NoWhitespaceValidator
+      ]),
+      descriptionInput: new FormControl("", [
+        Validators.required,
+        NoWhitespaceValidator
+      ]),
       categoryInput: new FormControl("", [Validators.required])
     });
   }
 
   onFormSubmit(formDirective: FormGroupDirective) {
-    const book = new Book();
-    book.title = this.addBookForm.value.titleInput;
-    book.description = this.addBookForm.value.descriptionInput;
-    book.category = this.addBookForm.value.categoryInput;
-    mockBooks.push(book);
+    if (this.addBookForm.valid) {
+      const book = new Book();
+      book.title = this.addBookForm.value.titleInput;
+      book.description = this.addBookForm.value.descriptionInput;
+      book.category = this.addBookForm.value.categoryInput;
+      mockBooks.push(book);
 
-    formDirective.resetForm();
-    this.addBookForm.reset();
+      formDirective.resetForm();
+      this.addBookForm.reset();
+    }
   }
 }
