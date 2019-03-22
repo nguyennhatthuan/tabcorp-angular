@@ -9,6 +9,11 @@
   margin: 0.5em;
 }
 
+#addbutton {
+  width: 30%;
+  align-self: center;
+}
+
 #description {
   min-height: 4em;
   max-height: 4em;

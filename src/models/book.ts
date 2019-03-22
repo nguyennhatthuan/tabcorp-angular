@@ -10,6 +10,6 @@ export class Book {
     this.id = 0;
     this.title = "";
     this.description = "";
-    this.category = BookCategory.Novel;
+    this.category = BookCategory.Drama;
   }
 }

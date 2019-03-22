@@ -18,11 +18,13 @@
           placeholder="Title"
           required
         />
-        <mat-error *ngIf="addBookForm.get('titleInput').errors?.required">
-          You must enter a value
-        </mat-error>
-        <mat-error *ngIf="addBookForm.get('titleInput').errors?.whitespace">
-          Please enter valid data
+        <mat-error
+          *ngIf="
+            addBookForm.get('titleInput').errors?.required ||
+            addBookForm.get('titleInput').errors?.whitespace
+          "
+        >
+          You must enter valid value
         </mat-error>
       </mat-form-field>
 
@@ -32,10 +34,9 @@
           formControlName="categoryInput"
           required
         >
-          <mat-option value="Art">Art</mat-option>
+          <mat-option value="Drama">Drama</mat-option>
           <mat-option value="Comedy">Comedy</mat-option>
-          <mat-option value="Novel">Novel</mat-option>
-          <mat-option value="Technical">Technical</mat-option>
+          <mat-option value="Sport">Sport</mat-option>
         </mat-select>
         <mat-error *ngIf="addBookForm.get('categoryInput').errors?.required">
           You must enter a value
@@ -50,13 +51,13 @@
           id="description"
           required
         ></textarea>
-        <mat-error *ngIf="addBookForm.get('descriptionInput').errors?.required">
-          You must enter a value
-        </mat-error>
         <mat-error
-          *ngIf="addBookForm.get('descriptionInput').errors?.whitespace"
+          *ngIf="
+            addBookForm.get('descriptionInput').errors?.required ||
+            addBookForm.get('descriptionInput').errors?.whitespace
+          "
         >
-          Please enter valid data
+          You must enter valid value
         </mat-error>
       </mat-form-field>
 
@@ -65,6 +66,7 @@
         type="submit"
         [disabled]="addBookForm.invalid"
         color="primary"
+        id="addbutton"
       >
         Add
       </button>

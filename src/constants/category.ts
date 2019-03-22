@@ -1,6 +1,5 @@
 export enum BookCategory {
-  Art = "Art",
+  Drama = "Drama",
   Comedy = "Comedy",
-  Novel = "Novel",
-  Technical = "Technical"
+  Sport = "Sport"
 }
