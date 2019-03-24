@@ -37,6 +37,22 @@ import { AddbookComponent } from "./addbook/addbook.component";
     MatToolbarModule,
     MatIconModule
   ],
+  exports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatListModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

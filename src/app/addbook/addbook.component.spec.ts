@@ -1,16 +1,36 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddbookComponent } from './addbook.component';
+import { AddbookComponent } from "./addbook.component";
+import {
+  MatToolbarModule,
+  MatInputModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatOptionModule,
+  MatSelectModule
+} from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-describe('AddbookComponent', () => {
+describe("AddbookComponent", () => {
   let component: AddbookComponent;
   let fixture: ComponentFixture<AddbookComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddbookComponent ]
-    })
-    .compileComponents();
+      declarations: [AddbookComponent],
+      imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatToolbarModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +39,7 @@ describe('AddbookComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

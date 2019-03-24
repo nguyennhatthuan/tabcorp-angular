@@ -1,35 +1,63 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { TestBed, async } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AppComponent } from "./app.component";
+import { AddbookComponent } from "./addbook/addbook.component";
+import { BooksComponent } from "./books/books.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+  MatInputModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatListModule,
+  MatCardModule,
+  MatToolbarModule,
+  MatIconModule
+} from "@angular/material";
 
-describe('AppComponent', () => {
+describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatListModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatIconModule
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent, AddbookComponent, BooksComponent]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  it("should create the app", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'tabcorp-fr'`, () => {
+  it(`should contain app-addbook'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('tabcorp-fr');
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector("app-addbook")).toBeDefined();
   });
 
-  it('should render title in a h1 tag', () => {
+  it(`should contain app-books'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to tabcorp-fr!');
+    expect(compiled.querySelector("app-books")).toBeDefined();
   });
 });
