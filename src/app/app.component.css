@@ -1,8 +1,8 @@
-.rootContainer {
+.root-container {
   width: 75%;
   margin: auto;
 }
 
-.rootContainer>* {
+.root-container>* {
   margin: 0em 1em;
 }
