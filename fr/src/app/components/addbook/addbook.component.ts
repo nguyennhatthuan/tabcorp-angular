@@ -5,10 +5,11 @@ import {
   Validators,
   FormGroupDirective
 } from "@angular/forms";
-import { mockBooks } from "./../../mockdata/books";
+import { mockBooks } from "./../../../mockdata/books";
 import { Book } from "src/models/book";
 import { BookCategory } from "src/constants/category";
 import { NoWhitespaceValidator } from "src/utils/validators";
+import { BooksService } from "./../../services/books.service";
 
 @Component({
   selector: "app-addbook",
@@ -19,7 +20,7 @@ export class AddbookComponent implements OnInit {
   category: BookCategory;
   addBookForm: FormGroup;
 
-  constructor() {}
+  constructor(private bookService: BooksService) {}
 
   ngOnInit() {
     this.addBookForm = new FormGroup({
@@ -41,7 +42,19 @@ export class AddbookComponent implements OnInit {
       book.title = this.addBookForm.value.titleInput;
       book.description = this.addBookForm.value.descriptionInput;
       book.category = this.addBookForm.value.categoryInput;
-      mockBooks.push(book);
+
+      // mockBooks.push(book);
+      console.log("Run to this line");
+      this.bookService.addBook(book).subscribe(
+        res => {
+          console.log(res);
+
+          // Should reload
+        },
+        err => {
+          console.log(err);
+        }
+      );
 
       formDirective.resetForm();
       this.addBookForm.reset();

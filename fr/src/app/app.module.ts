@@ -16,8 +16,10 @@ import {
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { BooksComponent } from "./books/books.component";
-import { AddbookComponent } from "./addbook/addbook.component";
+import { BooksComponent } from "./components/books/books.component";
+import { AddbookComponent } from "./components/addbook/addbook.component";
+import { BooksService } from "./services/books.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, BooksComponent, AddbookComponent],
@@ -35,25 +37,10 @@ import { AddbookComponent } from "./addbook/addbook.component";
     MatListModule,
     MatCardModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  exports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatListModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule
-  ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
