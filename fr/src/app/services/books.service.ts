@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Book } from "./../../models/book";
-import { Observable, of, throwError } from "rxjs";
+import { Observable, of, throwError, BehaviorSubject } from "rxjs";
 import {
   HttpClient,
   HttpHeaders,
@@ -22,19 +22,28 @@ const booksApiUrl = {
   providedIn: "root"
 })
 export class BooksService {
+  bookList = new BehaviorSubject<Book[]>([]);
+
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<any> {
     return this.http.get(booksApiUrl.getList, httpOptions).pipe(
-      map(this.extractData),
+      tap(res => this.bookList.next(res["data"])),
       catchError(this.handleError)
     );
   }
 
   addBook(book: Book): Observable<any> {
-    return this.http
-      .post(booksApiUrl.addBook, book, httpOptions)
-      .pipe(catchError(this.handleError));
+    return this.http.post(booksApiUrl.addBook, book, httpOptions).pipe(
+      tap(res => {
+        if (res["success"]) {
+          let bookList = this.bookList.value;
+          bookList.push(res["data"]);
+          this.bookList.next(bookList);
+        }
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -50,10 +59,5 @@ export class BooksService {
     }
     // return an observable with a user-facing error message
     return throwError("Something bad happened; please try again later.");
-  }
-
-  private extractData(res: Response) {
-    let body = res;
-    return body || {};
   }
 }

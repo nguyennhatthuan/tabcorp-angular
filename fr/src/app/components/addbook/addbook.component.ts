@@ -44,11 +44,9 @@ export class AddbookComponent implements OnInit {
       book.category = this.addBookForm.value.categoryInput;
 
       // mockBooks.push(book);
-      console.log("Run to this line");
+
       this.bookService.addBook(book).subscribe(
         res => {
-          console.log(res);
-
           // Should reload
         },
         err => {
